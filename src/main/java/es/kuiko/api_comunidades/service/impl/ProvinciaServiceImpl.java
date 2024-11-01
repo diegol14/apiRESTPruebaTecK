@@ -14,10 +14,11 @@ import es.kuiko.api_comunidades.model.Provincia;
 import es.kuiko.api_comunidades.model.ComunidadAutonoma;
 import es.kuiko.api_comunidades.repository.ComunidadAutonomaRepository;
 import es.kuiko.api_comunidades.repository.ProvinciaRepository;
+import es.kuiko.api_comunidades.service.ProvinciaService;
 
 @Service
 @Validated
-public class ProvinciaServiceImpl {
+public class ProvinciaServiceImpl implements ProvinciaService {
 
     private final ProvinciaRepository provinciaRepository;
     private final ComunidadAutonomaRepository comunidadAutonomaRepository;
@@ -27,15 +28,31 @@ public class ProvinciaServiceImpl {
         this.comunidadAutonomaRepository = comunidadAutonomaRepository;
     }
 
-    public List<Provincia> findAll() {
+    @Override
+    public List<Provincia> getAll() {
         return provinciaRepository.findAll();
     }
 
-    public Optional<Provincia> findById(Integer codigoProvincia) {
+    @Override
+    public Optional<Provincia> getById(Integer codigoProvincia) {
         validateCodigoProvincia(codigoProvincia);
         return provinciaRepository.findById(codigoProvincia);
     }
     
+	@Override
+	public Optional<ProvinciaInfoComunidadDTO> getProvinciaComunidadInfoById(Integer codigoProvincia) {
+		 validateCodigoProvincia(codigoProvincia);
+		 Optional<Provincia> optionalProvincia = provinciaRepository.findProvinciaComunidadInfoById(codigoProvincia);
+	        return optionalProvincia.filter(provincia -> provincia.getComunidadAutonoma() != null)
+	        		.map(provincia -> new ProvinciaInfoComunidadDTO(
+	                provincia.getCodigoProvincia(),
+	                provincia.getNombreProvincia(),
+	                provincia.getComunidadAutonoma().getCodigoCa(),
+	                provincia.getComunidadAutonoma().getNombreCa()
+	                ));
+	}
+    
+	@Override
     public Provincia create(ProvinciaDTO provinciaDTO) {
         validateCodigoProvincia(provinciaDTO.getCodigoProvincia());
         ComunidadAutonoma comunidadAutonoma = fetchComunidadByCodigoCa(provinciaDTO.getCodigoCa());

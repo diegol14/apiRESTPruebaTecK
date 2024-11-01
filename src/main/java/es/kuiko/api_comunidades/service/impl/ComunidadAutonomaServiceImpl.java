@@ -1,14 +1,18 @@
 package es.kuiko.api_comunidades.service.impl;
 
+import es.kuiko.api_comunidades.dto.ComunidadAutonomaCountProvinciasDTO;
 import es.kuiko.api_comunidades.model.ComunidadAutonoma;
 import es.kuiko.api_comunidades.repository.ComunidadAutonomaRepository;
+import es.kuiko.api_comunidades.repository.ProvinciaRepository;
 import es.kuiko.api_comunidades.service.ComunidadAutonomaService;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Validated
 public class ComunidadAutonomaServiceImpl implements ComunidadAutonomaService {
 
     private final ComunidadAutonomaRepository comunidadAutonomaRepository;
@@ -18,14 +22,27 @@ public class ComunidadAutonomaServiceImpl implements ComunidadAutonomaService {
     }
 
     @Override
-    public List<ComunidadAutonoma> findAll() {
+    public List<ComunidadAutonoma> getAll() {
         return comunidadAutonomaRepository.findAll();
     }
 
     @Override
-    public Optional<ComunidadAutonoma> findById(String codigoCa) {
+    public Optional<ComunidadAutonoma> getById(String codigoCa) {
         validateCodigoCa(codigoCa);  
         return comunidadAutonomaRepository.findById(codigoCa);
+    }
+    
+    public Optional<ComunidadAutonomaCountProvinciasDTO> getCantidadProvinciasByComunidad(String codigoCa) {
+        validateCodigoCa(codigoCa);
+        ensureComunidadExists(codigoCa);
+
+        // Llama al repositorio y convierte la interfaz en el DTO
+        return comunidadAutonomaRepository.findCantidadProvinciasPorComunidad(codigoCa)
+            .map(projection -> new ComunidadAutonomaCountProvinciasDTO(
+                projection.getCodigoCa(),
+                projection.getNombreCa(),
+                projection.getCantidadProvinciaInComunidad()
+            ));
     }
 
     @Override
@@ -66,7 +83,6 @@ public class ComunidadAutonomaServiceImpl implements ComunidadAutonomaService {
         }
     }
     
-
     private void ensureComunidadExists(String codigoCa) {
         if (!doesComunidadExist(codigoCa)) {
             throw new RuntimeException("Comunidad Autónoma no encontrada");

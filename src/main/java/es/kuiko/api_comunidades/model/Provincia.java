@@ -1,5 +1,8 @@
 package es.kuiko.api_comunidades.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.CascadeType;
@@ -32,6 +35,7 @@ public class Provincia {
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "codigo_ca", nullable = false,updatable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)  // Borrado en cascada en base de datos
     @JsonBackReference // Añadido para evitar recursión infinita con Com Autonoma
     private ComunidadAutonoma comunidadAutonoma;
     

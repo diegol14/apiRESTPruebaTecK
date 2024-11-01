@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import es.kuiko.api_comunidades.dto.ComunidadAutonomaCountProvinciasDTO;
 import es.kuiko.api_comunidades.model.ComunidadAutonoma;
 import es.kuiko.api_comunidades.service.impl.ComunidadAutonomaServiceImpl;
 
@@ -24,16 +25,23 @@ public class ComunidadAutonomaController {
     
     @GetMapping("/")
     public ResponseEntity<List<ComunidadAutonoma>> getAll() {
-        List<ComunidadAutonoma> comunidades = comunidadAutonomaServiceImpl.findAll();
+        List<ComunidadAutonoma> comunidades = comunidadAutonomaServiceImpl.getAll();
         return ResponseEntity.ok(comunidades);
     }
 
     @GetMapping("/{caCode}")
     public ResponseEntity<?> getByCode(@PathVariable("caCode") String caCode) {
-        Optional<ComunidadAutonoma> comunidad = comunidadAutonomaServiceImpl.findById(caCode);
+        Optional<ComunidadAutonoma> comunidad = comunidadAutonomaServiceImpl.getById(caCode);
         return comunidad.isPresent() 
                 ? ResponseEntity.ok(comunidad.get())
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Comunidad Autónoma no encontrada");
+    }
+    
+    @GetMapping("/{codigoCa}/cantidad-provincias")
+    public ResponseEntity<ComunidadAutonomaCountProvinciasDTO> getCantidadProvincias(@PathVariable String codigoCa) {
+        Optional<ComunidadAutonomaCountProvinciasDTO> dto = comunidadAutonomaServiceImpl.getCantidadProvinciasByComunidad(codigoCa);
+        return dto.map(ResponseEntity::ok)
+                  .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/")
@@ -42,7 +50,7 @@ public class ComunidadAutonomaController {
         return new ResponseEntity<>(createdComunidad, HttpStatus.CREATED);
     }
 
-    @PatchMapping("/{caCode}")
+    @PutMapping("/{caCode}")
     public ResponseEntity<?> update(
         @PathVariable("caCode") String caCode,
         @Valid @RequestBody ComunidadAutonoma comunidadActualizada) {

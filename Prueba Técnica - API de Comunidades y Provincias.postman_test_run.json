@@ -1,0 +1,286 @@
+{
+	"id": "551a720b-9284-4e0e-946e-e8804b9bc045",
+	"name": "Prueba Técnica - API de Comunidades y Provincias",
+	"timestamp": "2024-11-01T21:25:23.877Z",
+	"collection_id": "32837664-b62c74c9-ef2a-4466-a48d-bb2903e21479",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"delay": "5",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-11-01T21:25:21.791Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "a176b683-10b7-4fc6-a3be-55cfa769ba5d",
+			"name": "Obtener todas las comunidades autónomas",
+			"url": "http://localhost:8088/api-kuiko/comunidades-autonomas/",
+			"time": 243,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				243
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e599b5d2-bb3c-4151-8064-758de8479d4c",
+			"name": "Obtener una comunidad autónoma por código",
+			"url": "http://localhost:8088/api-kuiko/comunidades-autonomas/PV",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "eecf618a-c70f-4b4b-9393-79eb3ee4091a",
+			"name": "Obtener la cantidad de provincias en una comunidad autónoma",
+			"url": "http://localhost:8088/api-kuiko/comunidades-autonomas/CM/cantidad-provincias",
+			"time": 85,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				85
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e1fa4881-a108-4b51-8b9b-4d16c4539fa5",
+			"name": "Crear una nueva comunidad autónoma",
+			"url": "http://localhost:8088/api-kuiko/comunidades-autonomas/",
+			"time": 63,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				63
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d20dc3cd-c926-498b-9b98-dff473afd9dd",
+			"name": "Actualizar una comunidad autónoma por código",
+			"url": "http://localhost:8088/api-kuiko/comunidades-autonomas/PV",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e714fb37-d267-4ce0-bb78-e3c20e6b851d",
+			"name": "Eliminar una comunidad autónoma por código",
+			"url": "http://localhost:8088/api-kuiko/comunidades-autonomas/CM",
+			"time": 15,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				15
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "78a5f772-bcf7-48c4-96b7-66bee558c779",
+			"name": "Obtener todas las provincias",
+			"url": "http://localhost:8088/api-kuiko/provincias/",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				17
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fd1a2867-69fb-4176-8ce1-5caf5164400d",
+			"name": "Obtener una provincia por código",
+			"url": "http://localhost:8088/api-kuiko/provincias/1",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "87b6f571-a8ad-4dfc-81ba-c9ce34b42926",
+			"name": "Obtener detalles de la comunidad autónoma de una provincia",
+			"url": "http://localhost:8088/api-kuiko/provincias/1/detalles-comunidad",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				13
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "532c1042-3993-46cb-973f-45bc32785040",
+			"name": "Crear una nueva provincia",
+			"url": "http://localhost:8088/api-kuiko/provincias/",
+			"time": 21,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3b68351c-87d7-4f90-8762-bdd9f226dd1e",
+			"name": "Actualizar una provincia por código",
+			"url": "http://localhost:8088/api-kuiko/provincias/99",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c998597e-7e3e-4b8e-818b-15b13c47bbb3",
+			"name": "Eliminar una provincia por código",
+			"url": "http://localhost:8088/api-kuiko/provincias/99",
+			"time": 23,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				23
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 537,
+	"collection": {
+		"requests": [
+			{
+				"id": "a176b683-10b7-4fc6-a3be-55cfa769ba5d",
+				"method": "GET"
+			},
+			{
+				"id": "e599b5d2-bb3c-4151-8064-758de8479d4c",
+				"method": "GET"
+			},
+			{
+				"id": "eecf618a-c70f-4b4b-9393-79eb3ee4091a",
+				"method": "GET"
+			},
+			{
+				"id": "e1fa4881-a108-4b51-8b9b-4d16c4539fa5",
+				"method": "POST"
+			},
+			{
+				"id": "d20dc3cd-c926-498b-9b98-dff473afd9dd",
+				"method": "PUT"
+			},
+			{
+				"id": "e714fb37-d267-4ce0-bb78-e3c20e6b851d",
+				"method": "DELETE"
+			},
+			{
+				"id": "78a5f772-bcf7-48c4-96b7-66bee558c779",
+				"method": "GET"
+			},
+			{
+				"id": "fd1a2867-69fb-4176-8ce1-5caf5164400d",
+				"method": "GET"
+			},
+			{
+				"id": "87b6f571-a8ad-4dfc-81ba-c9ce34b42926",
+				"method": "GET"
+			},
+			{
+				"id": "532c1042-3993-46cb-973f-45bc32785040",
+				"method": "POST"
+			},
+			{
+				"id": "3b68351c-87d7-4f90-8762-bdd9f226dd1e",
+				"method": "PUT"
+			},
+			{
+				"id": "c998597e-7e3e-4b8e-818b-15b13c47bbb3",
+				"method": "DELETE"
+			}
+		]
+	}
+}

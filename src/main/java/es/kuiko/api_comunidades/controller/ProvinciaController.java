@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import es.kuiko.api_comunidades.dto.ProvinciaDTO;
+import es.kuiko.api_comunidades.dto.ProvinciaInfoComunidadDTO;
 import es.kuiko.api_comunidades.model.Provincia;
 import es.kuiko.api_comunidades.service.impl.ProvinciaServiceImpl;
 import jakarta.validation.Valid;
@@ -23,17 +24,26 @@ public class ProvinciaController {
     
     @GetMapping("/")
     public ResponseEntity<List<Provincia>> getAll() {
-        List<Provincia> provincias = provinciaServiceImpl.findAll();
+        List<Provincia> provincias = provinciaServiceImpl.getAll();
         return ResponseEntity.ok(provincias);
     }
 
     @GetMapping("/{codigoProvincia}")
     public ResponseEntity<?> getByCodigo(@PathVariable("codigoProvincia") Integer codigoProvincia) {
     	validateCodigoProvincia(codigoProvincia);
-        Optional<Provincia> provincia = provinciaServiceImpl.findById(codigoProvincia);
+        Optional<Provincia> provincia = provinciaServiceImpl.getById(codigoProvincia);
         return provincia.isPresent() 
                 ? ResponseEntity.ok(provincia.get()) 
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Provincia no encontrada");
+    }
+    
+    //Se agrega endpoint que devuelve provincia, codigo y nombre de ComunidadAutonoma
+    @GetMapping("/{codigoProvincia}/detalles-comunidad")
+    public ResponseEntity<?> findProvinciaComunidadInfo(@PathVariable("codigoProvincia") Integer codigoProvincia) {
+        
+    	Optional<ProvinciaInfoComunidadDTO> response = provinciaServiceImpl.getProvinciaComunidadInfoById(codigoProvincia);
+        
+        return response.isPresent() ? ResponseEntity.ok(response.get()) : ResponseEntity.notFound().build();
     }
     
     @PostMapping("/")
@@ -42,7 +52,7 @@ public class ProvinciaController {
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
-    @PatchMapping("/{codigoProvincia}")
+    @PutMapping("/{codigoProvincia}")
     public ResponseEntity<?> update(
             @PathVariable("codigoProvincia") Integer codigoProvincia, 
             @Valid @RequestBody ProvinciaDTO provinciaDTOActualizada) {

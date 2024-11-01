@@ -12,7 +12,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-
 @Entity
 @Table(name="comunidad_autonoma")
 public class ComunidadAutonoma {
@@ -49,7 +48,4 @@ public class ComunidadAutonoma {
 	public void setProvincias(List<Provincia> provincias) {
 		this.provincias = provincias;
 	}
-	
-	
-	
 }

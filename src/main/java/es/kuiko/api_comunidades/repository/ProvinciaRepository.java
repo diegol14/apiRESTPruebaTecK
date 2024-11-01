@@ -15,9 +15,8 @@ public interface ProvinciaRepository  extends JpaRepository<Provincia, Integer>{
 
     Optional<Provincia>  findByCodigoProvincia(Integer codigoProvincia);
     
+    //Query para obtener codProvincia, nombreProvincia, codCA, nombreCa para ProvinciaInfoCjomunidadDTO
     @Query("SELECT p FROM Provincia p JOIN FETCH p.comunidadAutonoma WHERE p.codigoProvincia = :codigoProvincia")
     Optional<Provincia> findProvinciaComunidadInfoById(@Param("codigoProvincia") Integer codigoProvincia);
     
-
-
 }

@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "c7f6e496-dbdd-4f57-8648-a786ed9c5cdd",
+		"name": "Prueba Técnica - API de Comunidades y Provincias",
+		"description": "Colección de solicitudes para la API de Comunidades Autónomas y Provincias",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32837664"
+	},
+	"item": [
+		{
+			"name": "Obtener todas las comunidades autónomas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/comunidades-autonomas/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"comunidades-autonomas",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una comunidad autónoma por código",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/comunidades-autonomas/PV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"comunidades-autonomas",
+						"PV"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener la cantidad de provincias en una comunidad autónoma",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/comunidades-autonomas/CM/cantidad-provincias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"comunidades-autonomas",
+						"CM",
+						"cantidad-provincias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una nueva comunidad autónoma",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"codigoCa\": \"CA10\",\n    \"nombreCa\": \"COMUNIDAD AUTONOMA DE EJEMPLO\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/comunidades-autonomas/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"comunidades-autonomas",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una comunidad autónoma por código",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"codigoCa\": \"PV\",\n    \"nombreCa\": \"COMUNIDAD AUTONOMA DEL PAIS VASCO ACTUALIZADA\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/comunidades-autonomas/PV",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"comunidades-autonomas",
+						"PV"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una comunidad autónoma por código",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/comunidades-autonomas/CM",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"comunidades-autonomas",
+						"CM"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las provincias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/provincias/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"provincias",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una provincia por código",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/provincias/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"provincias",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener detalles de la comunidad autónoma de una provincia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/provincias/1/detalles-comunidad",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"provincias",
+						"1",
+						"detalles-comunidad"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una nueva provincia",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"codigoProvincia\": 99,\n    \"nombreProvincia\": \"PROVINCIA DE EJEMPLO\",\n    \"codigoCa\": \"PV\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/provincias/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"provincias",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una provincia por código",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"codigoProvincia\": 99,\n    \"nombreProvincia\": \"PROVINCIA DE EJEMPLO\",\n    \"codigoCa\": \"PV\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/provincias/99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"provincias",
+						"99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una provincia por código",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api-kuiko/provincias/99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api-kuiko",
+						"provincias",
+						"99"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
